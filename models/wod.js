@@ -1,4 +1,4 @@
-// app/models/routine.js
+// app/models/wod.js
 // grab the mongoose module
 var mongoose = require('mongoose');
 

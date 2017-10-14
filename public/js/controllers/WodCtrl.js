@@ -36,7 +36,7 @@ myModule.controller('WODController', ['$scope', '$http', 'Wod', 'WodLog', functi
     WodLog.get($scope.firstDay, $scope.lastDay).then(function(res) {
     	$scope.wodLogs = res.data;
 
-    	//when we retrieve routines add them to an active arrow for button class
+    	//when we retrieve wods add them to an active arrow for button class
     	$scope.wodLogs.forEach( function (wodlog) {
     		$scope.activeButtons.push(wodlog.wodId);
     	});
@@ -48,7 +48,7 @@ myModule.controller('WODController', ['$scope', '$http', 'Wod', 'WodLog', functi
 	    	$scope.wodLogs = res.data;
 	    	$scope.activeButtons = [];
 
-	    	//when we retrieve routines add them to an active arrow for button class
+	    	//when we retrieve wods add them to an active arrow for button class
 	    	$scope.wodLogs.forEach( function (wodlog) {
 	    		$scope.activeButtons.push(wodlog.wodId);
 	    	});
@@ -84,7 +84,7 @@ myModule.controller('WODController', ['$scope', '$http', 'Wod', 'WodLog', functi
     	};
 
         Wod.create(json).then(function(res) {
-            console.log("routine saved");
+            console.log("wod saved");
         });
 
         $scope.newWodName = '';

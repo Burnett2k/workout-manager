@@ -1,6 +1,5 @@
 // app/routes.js
 // grab the nerd model we just created
-var Routine = require('./models/routine');
 var Wod = require('./models/wod');
 var WodLog = require('./models/wodlog');
 
@@ -9,54 +8,8 @@ var WodLog = require('./models/wodlog');
         var sonosJson = {};
         var openConnections = [];
 
-        app.get('/api/routines', function(req, res) {
-            // use mongoose to get all routines in the database
-            Routine.find(function(err, routines) {
-
-                // if there is an error retrieving, send the error. 
-                // nothing after res.send(err) will execute
-                if (err)
-                    res.send(err);
-
-                res.json(routines); // return all routines in JSON format
-            });
-        });
-
-        // route to handle creating goes here (app.post)
-        app.post('/api/routines', function (req, res) {
-
-            var routine = new Routine();
-            routine.name = req.body.name;
-            routine.hour = req.body.hour;
-            routine.minute = req.body.minute;
-            routine.dayOfWeek = req.body.dayOfWeek;
-            routine.message = req.body.message;
-            routine.getWeather = req.body.getWeather;
-            routine.getQotd = req.body.getQotd;
-            console.log('routine = ' + routine);
-
-            routine.save(function(err, routine) {
-                if (err) return console.error(err);
-
-                res.json({ message: 'routine created!'});
-            });
-
-        });
-
-        // route to handle delete goes here (app.delete)
-        app.delete('/api/routines/:routine_id', function(req, res) {
-            Routine.remove({
-                _id: req.params.routine_id}, function(err,bear) {
-                if (err)
-                    res.send(err);
-
-                res.json({ message: 'successfully deleted'});
-            });
-
-        });
-
         app.get('/api/wods', function(req, res) {
-            // use mongoose to get all routines in the database
+            // use mongoose to get all wods in the database
             Wod.find(function(err, wods) {
 
                 // if there is an error retrieving, send the error. 
@@ -64,7 +17,7 @@ var WodLog = require('./models/wodlog');
                 if (err)
                     res.send(err);
 
-                res.json(wods); // return all routines in JSON format
+                res.json(wods); // return all wods in JSON format
             });
         });
 
@@ -107,7 +60,7 @@ var WodLog = require('./models/wodlog');
         });
 
         app.get('/api/wodlogs', function(req, res) {
-            // use mongoose to get all routines in the database
+            // use mongoose to get all wodlogs in the database
 
             var begDate = req.query.begDate;
             var endDate = req.query.endDate;
@@ -125,7 +78,7 @@ var WodLog = require('./models/wodlog');
                 if (err)
                     res.send(err);
 
-                res.json(wodlogs); // return all routines in JSON format
+                res.json(wodlogs); // return all wodlogs in JSON format
             });
         });
 

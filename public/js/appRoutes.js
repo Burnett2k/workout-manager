@@ -9,12 +9,6 @@
             controller: 'MainController'
         })
 
-        // 
-        .when('/routines', {
-            templateUrl: 'views/routine.html',
-            controller: 'RoutineController'
-        })
-
         .when('/wods', {
             templateUrl: 'views/wod.html',
             controller: 'WODController'
