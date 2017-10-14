@@ -5,8 +5,8 @@
 
         // home page
         .when('/', {
-            templateUrl: 'views/home.html',
-            controller: 'MainController'
+            templateUrl: 'views/wod.html',
+            controller: 'WODController'
         })
 
         .when('/wods', {

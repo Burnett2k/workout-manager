@@ -1,3 +1,4 @@
+
 //required modules
 var http = require('http');
 var request = require('request');
@@ -26,7 +27,7 @@ var configuration = JSON.parse(
 );
 
 mongoose.Promise = global.Promise;
-mongoose.connect(configuration.mongoUrl);
+mongoose.connect(configuration.mongoUrl, { useMongoClient: true });
 
 //misc variables
 var logging = true;
