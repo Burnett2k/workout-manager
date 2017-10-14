@@ -5,9 +5,6 @@ var WodLog = require('./models/wodlog');
 
     module.exports = function(app) {
 
-        var sonosJson = {};
-        var openConnections = [];
-
         app.get('/api/wods', function(req, res) {
             // use mongoose to get all wods in the database
             Wod.find(function(err, wods) {
@@ -116,42 +113,6 @@ var WodLog = require('./models/wodlog');
 
         });
 
-        app.get('/sonosChange', function (req, res) {
-             // set timeout as high as possible
-             req.socket.setTimeout(Number.MAX_VALUE);
-
-             res.writeHead(200, {
-                'Content-Type': 'text/event-stream',
-                'Cache-Control': 'no-cache',
-                'Connection': 'keep-alive'
-            });
-
-            console.log("opening event source connection");
-            openConnections.push(res);
-
-        });
-
-        function constructSSE() {
-             console.log('constructing sse');
-             if (openConnections.length > 0) {
-                 if (sonosJson) {
-                    console.log(sonosJson);
-                     openConnections[0].write('\n');
-                     openConnections[0].write('data: ' + JSON.stringify(sonosJson) + '\n\n');
-                }
-            }
-        }
-
-        app.post('/sonos', function (req, res) {
-            console.log("just received message from sonos");
-            if (req.body.type == 'transport-state') {
-                console.log('updating sonos json');
-                sonosJson = req.body.data.state.currentTrack;
-                constructSSE();
-            }
-            res.sendStatus(200);
-        })
-
         // frontend routes =========================================================
         // route to handle all angular requests
         // NOTE: you need to place other HTTP requests above this since this is a catch all and will
@@ -160,7 +121,5 @@ var WodLog = require('./models/wodlog');
             console.log("serving up view index.html");
             res.sendFile('/public/index.html', { root : __dirname}); // load our public/index.html file
         });
-
-
 
     };
