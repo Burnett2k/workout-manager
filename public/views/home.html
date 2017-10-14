@@ -1,0 +1,53 @@
+<!-- public/views/home.html -->
+
+<div class="jumbotron text-center">
+    <p>{{ tagline }}</p>
+    <h2>Currently Playing</h1>
+    <h1> {{ msg.title }} by {{ msg.artist }} </h1>
+    <span>
+	    <i class="fa fa-step-backward fa-5x ha-icon" ng-click="previousTrack()" title="Previous Track"></i>
+		<i class="fa fa-play fa-5x ha-icon" ng-click="playSonos()" title="Play"></i>
+		<i class="fa fa-pause fa-5x ha-icon" ng-click="pauseSonos()" title="Pause"></i>
+		<i class="fa fa-step-forward fa-5x ha-icon" ng-click="nextTrack()" title="Next Track"></i>
+	</span>
+	</br>
+	<div>
+		<h4> volume </h4>
+		<i class="fa fa-minus-circle fa-5x ha-icon" ng-click="decreaseVolume()"></i> 
+		<i class="fa fa-plus-circle fa-5x ha-icon" ng-click="increaseVolume()"></i>
+	</div>
+	<div>
+		<label style="padding-right:10px;">Artist Search:</label>
+		<input type="text" ng-model="musicSearchText" ng-keydown="($event.which === 13)?searchMusic(musicSearchText):0"></input>
+		<button ng-click="searchMusic(musicSearchText)">Play</button>
+	</div>
+	<div>
+		<label style="padding-right:10px;">Artist Radio:</label>
+		<input type="text" ng-model="radioText" ng-keydown="($event.which === 13)?searchMusicRadio(radioText):0"></input>
+		<button ng-click="searchMusicRadio(radioText)">Play</button>
+	</div>
+	<div>
+		<label style="padding-right:10px;">Play Album</label>
+		<input type="text" ng-model="albumText" ng-keydown="($event.which === 13)?searchMusicRadio(albumText):0"></input>
+		<button ng-click="searchMusicAlbum(albumText)">Play</button>
+	</div>
+	<div>
+		<label style="padding-right:10px;">Text to Speech:</label>
+		<input type="text" ng-model="speechText" ng-keydown="($event.which === 13)?sayCommand(speechText):0"></input>
+		<button ng-click="sayCommand(speechText)">SAY</button>
+	</div>
+	<p>status: {{sonosResult}}</p>
+	<br>
+	<a href="http://localhost:5005/master room/queue" target="_blank">Queue</a>
+	<a href="http://localhost:5005/master room/state" target="_blank">State</a>
+</div>
+
+<div class="jumbotron text-center">
+	<p>Lighting controls</p>
+	<i class="fa fa-circle fa-5x ha-icon" ng-click="toggleLights(false)"></i>
+	<i class="fa fa-circle-o fa-5x ha-icon" ng-click="toggleLights(true)"></i>
+	<p> dimmer </p>
+	<i class="fa fa-minus-circle fa-5x ha-icon" ng-click="dimLights()"></i>
+	<i class="fa fa-plus-circle fa-5x ha-icon" ng-click="brightenLights()"></i>
+	<p>status: {{hueResult}} </p>
+</div>

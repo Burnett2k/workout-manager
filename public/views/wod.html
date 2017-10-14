@@ -1,0 +1,48 @@
+<div class="jumbotron" ng-controller="WODController">
+	<h1>create new wods</h1>
+    <div>
+	    <label style="padding-right:10px;">Name</label>
+		<input type="text" ng-model="newWodName" ng-maxlength="50">
+	</div>
+	<div>
+		<label style="padding-right:10px;">Description</label>
+		<input type="text" ng-model="newWodDescription" ng-maxlength="500">
+	</div>
+	<div>
+		<label style="padding-right:10px;">WODIMAGE</label>
+		<input type="text" ng-model="newWodImage" ng-maxlength="500">
+	</div>
+	<button ng-click="createWod()">Add Wod</button>
+
+	<h1>Here are your WODS</h1>
+
+	<div class=row>
+		<i class="glyphicon glyphicon-chevron-left ha-icon col-sm-1" ng-click="getPreviousWeekWodLog()" title="Play"></i>
+		<p class="col-sm-10">Date Range: {{firstDay}} - {{lastDay}}</p>
+		<i class="glyphicon glyphicon-chevron-right ha-icon col-sm-1" ng-click="getNextWeekWodLog()" title="Play"></i>
+	</div>
+
+	<div class="row" ng-repeat="item in wods track by $index" ng-if="$index % 4 == 0">
+
+		<div class="col-sm-3" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]" ng-if="wods[i] != null"><p>{{i+1}}.</p>
+			<div class="card">
+				<div ng-if="wods[i].imgs.length > 0">
+					<img class="card-img-top" ng-src="{{wods[i].imgs[0] ? wods[i].imgs[0] : '/imgs/16x9.png'}}">
+					<i class="fa fa-pencil" ng-click="toggleEditing(i,wods[i].imgs[0])"></i>
+					<div ng-if="editing == i">
+						<label style="padding-right:10px;">WODIMAGE</label>
+						<input type="text" ng-model="updatedWodImg" ng-maxlength="500">
+						<button type="button" ng-click="updateWodImg(wods[i], updatedWodImg, i)">Update</button>
+					</div>
+				</div>
+				<div class="card-block">
+					<h4 class="card-title">{{wods[i].name}}</h4>
+					<p class="card-text">{{wods[i].description}}</p>
+					<button  type="button" class="btn" ng-class="activeButtons.indexOf(wods[i]._id) > -1 ? 'btn-success' : 'btn-danger'" ng-click="toggleButtonState(wods[i])">
+						{{wods[i].name}}
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

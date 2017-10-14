@@ -1,0 +1,3 @@
+{
+  "mongoUrl": "mongodb://test:test@ds149278.mlab.com:49278/home_automation"
+}

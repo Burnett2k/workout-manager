@@ -1,0 +1,23 @@
+.ha-icon {
+	cursor: hand;
+	cursor: pointer;
+	padding: 10px;
+}
+
+.hiddenRow {
+    padding: 0 !important;
+}
+
+.card-img-top {
+  width:100%;
+  height:auto;
+}
+
+.card-block {
+	padding-bottom: 10px;
+}
+
+.fa-pencil {
+	cursor: hand;
+	cursor: pointer;
+}
