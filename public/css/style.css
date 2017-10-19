@@ -4,6 +4,10 @@
 	padding: 10px;
 }
 
+.sb-close-icon {
+	float:right;
+}
+
 .hiddenRow {
     padding: 0 !important;
 }

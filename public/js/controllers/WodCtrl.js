@@ -92,6 +92,14 @@ myModule.controller('WODController', ['$scope', '$http', 'Wod', 'WodLog', functi
         $scope.newWodImage = '';
     };
 
+    $scope.deleteWod = function(wod) {
+    	Wod.delete(wod._id).then(function(res) {
+    		var index = $scope.wods.indexOf(wod);
+            $scope.wods.splice(index, 1);
+    		console.log("deleted")
+    	} )
+    };
+
     $scope.getPreviousWeekWodLog = function() {
     	sunday.setDate(sunday.getDate() - 7);
     	saturday.setDate(saturday.getDate() - 7);
