@@ -2,6 +2,7 @@
 // grab the nerd model we just created
 var Wod = require('./models/wod');
 var WodLog = require('./models/wodlog');
+var User = require('./models/user');
 
     module.exports = function(app) {
 
@@ -110,6 +111,32 @@ var WodLog = require('./models/wodlog');
 
                 res.json({ message: 'successfully deleted'});
             });
+
+        });
+
+        app.post('/api/user', function (req, res) {
+
+         if (req.body.email &&
+              req.body.username &&
+              req.body.password &&
+              req.body.passwordConf) {
+
+              var userData = {
+                email: req.body.email,
+                username: req.body.username,
+                password: req.body.password,
+                passwordConf: req.body.passwordConf,
+              }
+
+              //use schema.create to insert data into the db
+              User.create(userData, function (err, user) {
+                if (err) {
+                  return next(err)
+                } else {
+                  return res.redirect('/profile');
+                }
+              });
+            }
 
         });
 
