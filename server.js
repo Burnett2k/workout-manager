@@ -22,12 +22,15 @@ const PORT=8080;
 const settings = 'settings.json'; 
 
 //read config. values from settings.json configuration file
-var configuration = JSON.parse(
-	fs.readFileSync(settings)
-);
+var configuration;
 
-mongoose.Promise = global.Promise;
-mongoose.connect(configuration.mongoUrl, { useMongoClient: true });
+if (fs.existsSync(settings)) {
+	configuration = JSON.parse(fs.readFileSync(settings));
+	mongoose.Promise = global.Promise;
+	mongoose.connect(configuration.mongoUrl, { useMongoClient: true });
+}
+
+
 
 //misc variables
 var logging = true;
