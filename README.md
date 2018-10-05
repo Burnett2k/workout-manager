@@ -10,16 +10,23 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-1. NodeJS installation
+1. [NodeJS](https://nodejs.org/en/)
 2. Either a local MongoDB instance or a remote Mongo provider like [Mlab](https://mlab.com/)
 
 ### Installing
 
 A step by step series of examples that tell you have to get a development env running
 
-install npm dependencies
+1. Clone down the repo on your local filesystem
 
 ```
+git clone git@github.com:Burnett2k/workout-manager.git
+```
+
+2. install npm dependencies
+
+```
+cd workout-manager
 npm install
 ```
 
