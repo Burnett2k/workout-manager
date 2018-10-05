@@ -1,7 +1,5 @@
 
 //required modules
-var http = require('http');
-var request = require('request');
 var fs = require('fs');
 var express = require('express');
 var app = express();
@@ -25,6 +23,10 @@ const settings = 'settings.json';
 var configuration = JSON.parse(
 	fs.readFileSync(settings)
 );
+
+if (!configuration.mongoUrl) {
+  throw new Error("You must have a database string in the Settings.json file or this app will not work!");
+}
 
 mongoose.Promise = global.Promise;
 mongoose.connect(configuration.mongoUrl, { useMongoClient: true });
