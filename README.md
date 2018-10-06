@@ -30,13 +30,6 @@ cd workout-manager
 npm install
 ```
 
-install bower dependencies
-
-```
-npm install bower
-bower install
-```
-
 ### Configuration
 
 In the root folder, there is a settings.json folder. Within it, place the URL for your mongoDB. I recommend MongoLab's free option so you don't have to go through the hassle of a local installation
