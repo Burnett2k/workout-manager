@@ -28,7 +28,7 @@
 			<div class="card">
 				<div ng-if="wods[i].imgs.length > 0">
 					<img class="card-img-top" ng-src="{{wods[i].imgs[0] ? wods[i].imgs[0] : '/imgs/16x9.png'}}">
-					<i class="fa fa-pencil ha-icon" ng-click="toggleEditing(i,wods[i].imgs[0])"></i>
+					<i class="fa fa-pencil-alt ha-icon" ng-click="toggleEditing(i,wods[i].imgs[0])"></i>
 					<i class="fa fa-times ha-icon sb-close-icon" ng-click="deleteWod(wods[i])"></i>
 					<div ng-if="editing == i">
 						<label style="padding-right:10px;">WODIMAGE</label>
