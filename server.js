@@ -1,11 +1,11 @@
 
 //required modules
-var fs = require('fs');
-var express = require('express');
-var app = express();
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-
+let fs = require('fs');
+let express = require('express');
+let app = express();
+let mongoose = require('mongoose');
+let bodyParser = require('body-parser');
+let configuration;
 
 //bodyparser stuff
 app.use(bodyParser.json()); 
@@ -18,27 +18,19 @@ exports = app;
 //constants
 const PORT=8080;
 const settings = 'settings.json'; 
+const ERROR_TEXT = "You must have a database string in the settings.json file or this app will not work!";
 
-//read config. values from settings.json configuration file
-var configuration = JSON.parse(
-	fs.readFileSync(settings)
-);
-
-if (!configuration.mongoUrl) {
-  throw new Error("You must have a database string in the Settings.json file or this app will not work!");
+if (fs.existsSync(settings)) {
+  //read config. values from settings.json configuration file
+  configuration = JSON.parse(fs.readFileSync(settings));
+  if (!configuration.mongoUrl) {
+    throw new Error(ERROR_TEXT);
+  }
+} else {
+  throw new Error(ERROR_TEXT);
 }
 
 mongoose.Promise = global.Promise;
 mongoose.connect(configuration.mongoUrl, { useMongoClient: true });
 
-//misc variables
-var logging = true;
-
 app.listen(PORT);
-
-function handleResponse(error, response, body) {
-  if (!error && response.statusCode == 200 && logging) {
-    console.log(body);
-    return true;
-  }
-}
