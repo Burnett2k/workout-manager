@@ -15,7 +15,7 @@ require("./routes")(app);
 exports = app;
 
 //constants
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const settings = "settings.json";
 const ERROR_TEXT =
   "You must have a database string in the settings.json file or this app will not work!";
