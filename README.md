@@ -27,7 +27,7 @@ git clone git@github.com:Burnett2k/workout-manager.git
 
 ```
 cd workout-manager
-npm install
+yarn
 ```
 
 ### Configuration
@@ -42,11 +42,10 @@ In the root folder, there is a settings.json folder. Within it, place the URL fo
 
 ## Built With
 
-* [NodeJS](https://nodejs.org/en/)
-* [Express](https://www.npmjs.com/package/express)
-* [Mongoose](https://www.npmjs.com/package/mongoose)
-
+- [NodeJS](https://nodejs.org/en/)
+- [Express](https://www.npmjs.com/package/express)
+- [Mongoose](https://www.npmjs.com/package/mongoose)
 
 ## Authors
 
-* **Sawyer Burnett** - *Initial work*
+- **Sawyer Burnett** - _Initial work_
