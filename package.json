@@ -6,7 +6,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "ee-first": "^1.1.1",
-    "express": "^4.14.0",
+    "express": "^4.17.3",
     "forever": "^0.15.3",
     "mongoose": "^4.7.4",
     "ms": "^0.7.2",
